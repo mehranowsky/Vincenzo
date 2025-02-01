@@ -1,21 +1,54 @@
 #!/bin/bash
 
-echo -e "\e[35m-------GO AHEAD MR PIPINO-------\e[0m"
-getopts "am" MODE
-getopts "d:" domain
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+mkdir data
 
-DOMAIN=$OPTARG
+echo -e "\e[35m-------GO AHEAD MR.PIPINO-------\e[0m"
+
+# Initialize variables
+DOMAIN=""
+MODE=""
+USE_KATANA=false
+
+# Parse options
+while getopts "d:upak" option; do
+    case $option in
+        d) DOMAIN=$OPTARG ;;
+        u) MODE="u" ;;
+        p) MODE="p" ;;
+        a) MODE="a" ;;
+        k) USE_KATANA=true ;;
+        *) 
+            echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain"
+            exit 1
+            ;;
+    esac
+done
+
+# Check if domain is provided
+if [ -z "$DOMAIN" ]; then
+    echo -e "\e[31m***Domain name is not defined***\e[0m"
+    exit 1
+fi
+
+# Execute based on MODE
 case $MODE in
-    a)
-        echo -e "\e[31m************AUTOMATE************\e[0m"
-        ./auto.sh "$DOMAIN"
+    u)
+        echo -e "\e[31m************URLs************\e[0m"
+        $SCRIPT_DIR/urls.sh "$DOMAIN" "$USE_KATANA"
         ;;
-    m)
-        echo -e "\e[36m*************MANUAL*************\e[0m"
-        ./manual.sh "$DOMAIN"
+    p)
+        echo -e "\e[31m***********Params***********\e[0m"
+        $SCRIPT_DIR/params.sh "$DOMAIN"
+        ;;
+    a)
+        echo -e "\e[31m************URLs************\e[0m"
+        $SCRIPT_DIR/urls.sh "$DOMAIN" "$USE_KATANA"
+        echo -e "\e[31m***********Params***********\e[0m"
+        $SCRIPT_DIR/params.sh "$DOMAIN"
         ;;
     *)
-        echo "There is no MODE!"
+        echo "Usage: $0 [-u] URLs mode [-p] Params mode [-a] All mode [-d] Target domain"
         exit 1
         ;;
 esac
