@@ -5,7 +5,6 @@ DOMAIN="$1"
 USE_KATANA="$2"
 
 $SCRIPT_DIR/module/wayback.sh "$DOMAIN"
-linkfinder -d "$DOMAIN" -o cli
 if [ "$USE_KATANA" = true ]; then
     echo "Running Katana tool..."
     $SCRIPT_DIR/module/katana.sh "$DOMAIN" && sort -u data/wayback.txt data/katana.txt > data/urls.txt && rm data/katana.txt
