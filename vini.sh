@@ -8,18 +8,16 @@ echo -e "\e[35m-------GO AHEAD MR.PIPINO-------\e[0m"
 # Initialize variables
 DOMAIN=""
 MODE=""
-USE_KATANA=false
 
 # Parse options
-while getopts "d:upak" option; do
+while getopts "d:upa" option; do
     case $option in
         d) DOMAIN=$OPTARG ;;
         u) MODE="u" ;;
         p) MODE="p" ;;
         a) MODE="a" ;;
-        k) USE_KATANA=true ;;
         *) 
-            echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain"
+            echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All"
             exit 1
             ;;
     esac
@@ -35,7 +33,7 @@ fi
 case $MODE in
     u)
         echo -e "\e[31m************URLs************\e[0m"
-        $SCRIPT_DIR/urls.sh "$DOMAIN" "$USE_KATANA"
+        $SCRIPT_DIR/urls.sh "$DOMAIN"
         ;;
     p)
         echo -e "\e[31m***********Params***********\e[0m"
@@ -43,12 +41,12 @@ case $MODE in
         ;;
     a)
         echo -e "\e[31m************URLs************\e[0m"
-        $SCRIPT_DIR/urls.sh "$DOMAIN" "$USE_KATANA"
+        $SCRIPT_DIR/urls.sh "$DOMAIN"
         echo -e "\e[31m***********Params***********\e[0m"
         $SCRIPT_DIR/params.sh "$DOMAIN"
         ;;
     *)
-        echo "Usage: $0 [-u] URLs mode [-p] Params mode [-a] All mode [-d] Target domain"
+        echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All mode"
         exit 1
         ;;
 esac
