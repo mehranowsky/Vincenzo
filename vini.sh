@@ -48,7 +48,8 @@ case $MODE in
         $SCRIPT_DIR/params.sh "$DOMAIN"
         ;;
     *)
-        echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All mode"
+        echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All mode [-c] Cookie"
+            exit 1
         exit 1
         ;;
 esac
