@@ -1,7 +1,9 @@
 #!/bin/bash
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
-mkdir data
+if [ ! -e data ];then
+	mkdir data
+fi
 
 echo -e "\e[35m-----GO AHEAD MR.PIPINO-----\e[0m"
 
