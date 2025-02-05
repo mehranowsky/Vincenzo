@@ -8,6 +8,6 @@ gau "$DOMAIN" --threads 1 | grep -Eiv '\.(css|jpg|jpeg|png|svg|img|gif|exe|mp4|f
 
 # Active crawl
 echo "$DOMAIN" | katana -jc -automatic-form-fill -silent -H "$COOKIE" -headless -system-chrome -crawl-scope "$1" -extension-filter css,jpg,jpeg,png,svg,img,gif,mp4,flv,pdf,doc,ogv,webm,wmv,webp,mov,mp3,m4a,m4p,ppt,pptx,scss,tif,tiff,ttf,otf,woff,woff2,bmp,ico,eot,htc,swf,rtf,image > data/active.txt
-echo "$DOMAIN" | hakrawler | anew -q data/active.txt
+echo "https://$DOMAIN" | hakrawler | anew -q data/active.txt
 
 # echo google.com | subdomains | httpx | hakrawler
