@@ -13,15 +13,16 @@ MODE=""
 COOKIE=""
 
 # Parse options
-while getopts "d:upac" option; do
+while getopts "d:upach" option; do
     case $option in
         d) DOMAIN=$OPTARG ;;    # Set DOMAIN
         u) MODE="u" ;;          # Set mode to URLs
         p) MODE="p" ;;          # Set mode to Params
         a) MODE="a" ;;          # Set mode to All
-        c) COOKIE="$OPTARG" ;;  # Set COOKIE
+        c) COOKIE=$OPTARG ;;  # Set COOKIE
+        h) echo "Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie" ;;
         *) 
-            echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie"
+            echo "Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie"
             exit 1
             ;;
     esac
@@ -52,6 +53,5 @@ case $MODE in
     *)
         echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All mode [-c] Cookie"
             exit 1
-        exit 1
         ;;
 esac
