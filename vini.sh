@@ -1,10 +1,6 @@
 #!/bin/bash
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
-if [ ! -e data ];then
-	mkdir data
-fi
-
 echo -e "\e[35m-----GO AHEAD MR.PIPINO-----\e[0m"
 
 # Initialize variables
@@ -20,11 +16,11 @@ while getopts "d:upach" option; do
         p) MODE="p" ;;          # Set mode to Params
         a) MODE="a" ;;          # Set mode to All
         c) COOKIE=$OPTARG ;;  # Set COOKIE
-        h) echo "Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie" ;;
+        h) echo "Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie"
+            exit 1 ;;
         *) 
             echo "Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie"
-            exit 1
-            ;;
+            exit 1 ;;
     esac
 done
 
@@ -32,6 +28,10 @@ done
 if [ -z "$DOMAIN" ]; then
     echo -e "\e[31m***Domain name is not defined***\e[0m"
     exit 1
+fi
+
+if [ ! -e data ];then
+	mkdir data
 fi
 
 # Execute based on MODE
