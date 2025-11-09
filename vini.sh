@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -euo pipefail
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 echo -e "\e[35m-----GO AHEAD MR.PIPINO-----\e[0m"
 
