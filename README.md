@@ -29,6 +29,8 @@ Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie
 
 Always provide the domain **without** `http://` or `https://`.
 
+It makes a directory named "data/" and puts all in that.
+
 Crawl URLs (active + passive):
 ```bash
 ./vini.sh -d example.com -u
