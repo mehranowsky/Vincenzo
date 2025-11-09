@@ -39,16 +39,19 @@ case $MODE in
     u)
         echo -e "\e[31m************URLs************\e[0m"
         $SCRIPT_DIR/urls.sh "$DOMAIN" "$COOKIE"
+		echo "Your URLs are in data/ directory"
         ;;
     p)
         echo -e "\e[31m***********Params***********\e[0m"
         $SCRIPT_DIR/params.sh "$DOMAIN"
+		echo "Your params are in data/ directory"
         ;;
     a)
         echo -e "\e[31m************URLs************\e[0m"
         $SCRIPT_DIR/urls.sh "$DOMAIN" "$COOKIE"
         echo -e "\e[31m***********Params***********\e[0m"
         $SCRIPT_DIR/params.sh "$DOMAIN"
+		echo "Your assets are in data/ directory"
         ;;
     *)
         echo "Usage: $0 [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All mode [-c] Cookie"
