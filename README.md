@@ -29,22 +29,22 @@ Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie
 
 Always provide the domain **without** `http://` or `https://`.
 
-✅ Crawl URLs (active + passive):
+Crawl URLs (active + passive):
 ```bash
 ./vini.sh -d example.com -u
 ```
 
-✅ Extract parameters:
+Extract parameters:
 ```bash
 ./vini.sh -d example.com -p
 ```
 
-✅ Run URLs + Params together:
+Run URLs + Params together:
 ```bash
 ./vini.sh -d example.com -a
 ```
 
-✅ Authenticated crawling:
+Authenticated crawling:
 ```bash
 ./vini.sh -d example.com -u -c "session=abc123"
 ```
