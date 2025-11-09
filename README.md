@@ -1,25 +1,62 @@
-A simple use tool for narrow recon
+# Vincenzo — Narrow Recon Tool (Bash)
 
-Setup :
+A lightweight and fast Bash tool for narrow web reconnaissance:
+- Passive & active URL crawling
+- Parameter extraction
+- Simple CLI
+
+---
+
+## 📌 Setup
+
+Make the script executable:
 ```
 chmod +x ./vini.sh
-```
-```
+
+Show help:
 ./vini.sh -h
------GO AHEAD MR.PIPINO-----
+```
+
+Example help output:
+```
+----- GO AHEAD MR. PIPINO -----
 Usage: [-u] URLs mode [-p] Params mode [-d] Target domain [-a] All [-c] Cookie
 ```
-Usage :
-  just use domain name without scheme. 
-  Crawling the target actively and passively :
-```
+
+---
+
+## 🚀 Usage
+
+Always provide the domain **without** `http://` or `https://`.
+
+✅ Crawl URLs (active + passive):
+```bash
 ./vini.sh -d example.com -u
 ```
-  Extracting parameters from the target :
-```
+
+✅ Extract parameters:
+```bash
 ./vini.sh -d example.com -p
 ```
-  Output both URLs and parameters :
-```
+
+✅ Run URLs + Params together:
+```bash
 ./vini.sh -d example.com -a
 ```
+
+✅ Authenticated crawling:
+```bash
+./vini.sh -d example.com -u -c "session=abc123"
+```
+
+---
+
+## ⚙️ Requirements
+
+- Linux/macOS terminal
+
+---
+
+## 🎯 Notes
+
+- Designed for bug bounty / recon workflows
