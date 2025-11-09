@@ -34,7 +34,7 @@ Crawl URLs (active + passive):
 ./vini.sh -d example.com -u
 ```
 
-Extract parameters:
+Extract parameters (it requires crawling the target to get urls first):
 ```bash
 ./vini.sh -d example.com -p
 ```
